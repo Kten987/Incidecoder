@@ -20,17 +20,17 @@ def get_output(product_name_list):
         count_product_processing = product_name_list.index(product_name) + 1
         if count_product_processing % 10 == 0:
             time.sleep(5)
-
+            print(f"Done {product_name} -- estimated: {count_product_processing*100 /len_list}% -- products left: {len_list - count_product_processing}")
         # Clean product name, ex: The Auragins Glow Complexion Serum 14% Vitamin C ... -> The Auragins Glow Complexion Serum
         productName_clean = re.split("\d+\.\d+%|\d+%", product_name)[0].strip()
 
         # Get product links
         product_links = get_link_product(convert_productname(productName_clean))
         try:
-            if product_links == []:
+            if product_links == "":
                 list_output.append({"productName": product_name, "productName_clean": productName_clean , "process": "None link found"})
-            for link in product_links:
-                out_put = get_product_details(link)
+            else:
+                out_put = get_product_details(product_links)
                 out_put["productName"] = product_name
                 out_put["productName_clean"] = productName_clean
                 list_output.append(out_put)
@@ -38,7 +38,6 @@ def get_output(product_name_list):
         except Exception as e:
             print(f"Error: {e} because of {product_name}")
         
-        print(f"Done {product_name} -- estimated: {count_product_processing*100 /len_list}% -- products left: {len_list - count_product_processing}")
 
     df_output = pd.DataFrame(list_output)
     return df_output

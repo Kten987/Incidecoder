@@ -12,9 +12,10 @@ def clean_output(source = "Thinh_Assignment.csv"):
     df = get_output(input_df)
     # clean columns
     clean_columns(df, ["incide_enDescription", "incide_ingredients"])
+    df["incide_productName"] = df["brand"] + " " + df["short_product_name"]
+    df["isTrue_productName"] = df["productName"] == df["productName_clean"]
     return df
 
 if __name__ == "__main__":
-    t = clean_output("Thinh_Assignment.csv")
-    t.to_csv("output_5.csv", index=False)
-    print(t.head(5))
+    t = clean_output("Product Data incidecoder - 8.csv")
+    t.to_csv("output_sheet8.csv", index=False)

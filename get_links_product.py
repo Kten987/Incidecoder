@@ -21,9 +21,9 @@ def get_link_product(product_name) -> list[str]:
     short_product_links = [link.get('href') for link in soup.find_all('a', class_='klavika simpletextlistitem')]
     # Nếu ko có link thì trả về None
     if short_product_links == []:
-        product_links = []
+        product_links = ""
     else:
-        product_links = ["https://incidecoder.com" + link for link in short_product_links]
+        product_links = ["https://incidecoder.com" + link for link in short_product_links][0]
     return product_links
     
 
