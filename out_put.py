@@ -28,7 +28,7 @@ def get_output(product_name_list):
         product_links = get_link_product(convert_productname(productName_clean))
         try:
             if product_links == []:
-                list_output.append({"productName": product_name, "productName_clean": productName_clean , "process": "Failed"})
+                list_output.append({"productName": product_name, "productName_clean": productName_clean , "process": "None link found"})
             for link in product_links:
                 out_put = get_product_details(link)
                 out_put["productName"] = product_name

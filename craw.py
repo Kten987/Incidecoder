@@ -27,6 +27,13 @@ def get_product_details(url) -> dict:
         else:
             result['short_product_name'] = ""
 
+        # Lấy ngày uploaded, đk: tag "time"
+        date_element = soup.find("time")
+        if date_element:
+            result['date_upload'] = date_element.get_text(strip=True)
+        else:
+            result['date_upload'] = ""
+
         # Lấy description, đk: id "product-details"
         element = soup.find(id="product-details")
         if element:
@@ -51,6 +58,7 @@ def get_product_details(url) -> dict:
         result['Link incidecoder'] = url
         result['brand'] = ""
         result['short_product_name'] = ""
+        result['date_upload'] = ""
         result['incide_enDescription'] = ""
         result['incide_ingredients'] = ""
         result['incide_imageKey'] = ""
@@ -60,4 +68,4 @@ def get_product_details(url) -> dict:
 
 if __name__ == "__main__":
     test = get_product_details("https://incidecoder.com/products/pyunkang-yul-low-ph-pore-deep-cleansing-foam-4")
-    print(test["incide_imageKey"])
+    print(test["date_upload"])
