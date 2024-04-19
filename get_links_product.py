@@ -23,7 +23,7 @@ def get_link_product(product_name) -> list[str]:
     if short_product_links == []:
         product_links = ""
     else:
-        product_links = ["https://incidecoder.com" + link for link in short_product_links][0]
+        product_links = ["https://incidecoder.com" + link for link in short_product_links][0] # chỉ lấy 1 link đầu tiên
     return product_links
     
 

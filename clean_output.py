@@ -18,4 +18,4 @@ def clean_output(source = "Thinh_Assignment.csv"):
 
 if __name__ == "__main__":
     t = clean_output("Product Data incidecoder - 8.csv")
-    t.to_csv("output_sheet8.csv", index=False)
+    t.to_csv("output_IncideCoder_sheet8.csv", index=False)

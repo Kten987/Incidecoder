@@ -5,7 +5,7 @@ import time
 import re
 
 def input_product_name(source = "Thinh_Assignment.csv"):
-    df = pd.read_csv(source).drop_duplicates()
+    df = pd.read_csv(source) # giữ nguyên giá trị duplicate
     product_name_list = df["productName"].tolist()
 
     return product_name_list
@@ -18,8 +18,8 @@ def get_output(product_name_list):
 
         # Thứ tự prodcut hiện tại
         count_product_processing = product_name_list.index(product_name) + 1
-        if count_product_processing % 10 == 0:
-            time.sleep(5)
+        if count_product_processing % 25 == 0:
+            time.sleep(3)
             print(f"Done {product_name} -- estimated: {count_product_processing*100 /len_list}% -- products left: {len_list - count_product_processing}")
         # Clean product name, ex: The Auragins Glow Complexion Serum 14% Vitamin C ... -> The Auragins Glow Complexion Serum
         productName_clean = re.split("\d+\.\d+%|\d+%", product_name)[0].strip()
